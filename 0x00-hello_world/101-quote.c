@@ -7,7 +7,12 @@
  */
 int main(void)
 {
-	const char message[] = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
+	const char message1 = "and that piece of art is useful\"";
+	const char message2 = " - Dora Korpar, 2015-10-19\n";
+	const char *message = message1;
+
+	write(2, message, strlen(message));
+	message = message2;
 
 	write(2, message, strlen(message));
 	return (1);
