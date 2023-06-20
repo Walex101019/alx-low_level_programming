@@ -18,5 +18,6 @@ int main(void)
 	{
 		letter = 'A' + i;
 		putchar(letter);
+	}
 	return (0);
 }
