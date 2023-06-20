@@ -13,11 +13,11 @@ int main(void)
 	{
 		putchar(letter);
 	}
-	putchar('\n');
 	for (i = 0; i < 26; i++)
 	{
 		letter = 'A' + i;
 		putchar(letter);
 	}
+	putchar('\n');
 	return (0);
 }
