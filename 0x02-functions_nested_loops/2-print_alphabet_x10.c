@@ -6,7 +6,7 @@
  *
  * void print_alphabet void: specifies the function doesn't return a value.
  */
-void print_alphabet(void)
+void print_alphabet_x10(void)
 {
 	char letter;
 	int i;
