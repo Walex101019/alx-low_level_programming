@@ -3,9 +3,8 @@
 /**
  * main - Entry point
  *
- * prints the alphabet in lowercase followed by new line.
- *
- * Return: Always 0 (Success)
+ * print_alphabet - Entry point.
+ * void print_alphabet void: specifies the function doesn't return a value.
  */
 void print_alphabet(void);
 int _putchar(char c);
