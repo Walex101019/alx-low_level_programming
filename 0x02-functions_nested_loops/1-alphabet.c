@@ -2,7 +2,6 @@
 /**
  * void prints alphabet in small letter \n
  * print_alphabet: prints alphabet in small letter \n
- * 
  */
 void print_alphabet(void)
 {
