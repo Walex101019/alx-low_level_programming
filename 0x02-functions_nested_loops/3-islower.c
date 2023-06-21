@@ -8,10 +8,12 @@ int main(void)
 {
 	char ch = 'c';
 
-	if islower(ch);
+	if (_islower(ch))
+	{
+		return (1);
+	}
+	else
 	{
 		return (0);
 	}
-	else
-		return (1);
 }
