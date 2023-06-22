@@ -8,7 +8,7 @@
  */
 int print_last_digit(int n)
 {
-	int x = n % 26
+	int x = n % 26;
 	if (x > 0)
 	{
 		x = x * -1;
