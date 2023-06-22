@@ -2,7 +2,7 @@
 /**
  * jack_bauer - Entry level.
  *
- * Return: void retursn 
+ * Return: void return
  */
 void jack_bauer(void)
 {
