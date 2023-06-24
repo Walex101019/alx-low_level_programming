@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "main.h"
 /**
  * main - Prints a fixxbzz program
  *
@@ -28,7 +29,5 @@ int main(void)
 			printf("%d ", x);
 		}
 	}
-	printf('\n');
 	return (0);
-}
 }
