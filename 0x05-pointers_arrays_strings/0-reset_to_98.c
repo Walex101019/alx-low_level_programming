@@ -2,7 +2,7 @@
 /**
  * reset_to_98 - Entry point
  *
- * @*n: patrameter passed
+ * @n: patrameter passed
  *
  * Return: returns void
  */
