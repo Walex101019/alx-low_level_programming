@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * swat_int - Entry point
+ * swap_int - Entry point
  *
  * @a: parameter passed
  *
@@ -11,6 +11,7 @@
 void swap_int(int *a, int *b)
 {
 	int aux;
+
 	aux = *a;
 	*a = *b;
 	*b = aux;
