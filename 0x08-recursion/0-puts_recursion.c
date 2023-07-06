@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * _pits_recursion - Entry point
+ * _puts_recursion - Entry point
  *
  * @s: parameter passed in
  *
