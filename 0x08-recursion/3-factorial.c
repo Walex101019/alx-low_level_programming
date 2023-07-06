@@ -2,7 +2,7 @@
 /**
  * factorial - Entry point
  *
- * @n : parameter passed
+ * @n: parameter passed
  *
  * Return: returns -1, 0
  */
