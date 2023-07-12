@@ -1,60 +1,47 @@
+#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include "main.h"
 /**
- * **strtow - Entry point
- * @str: parameter passed
- * Return: returns word
+ * strtow - Splits a string into words
+ * @str: The input string
+ *
+ * Return: Pointer to an array of strings (words) or NULL
  */
 char **strtow(char *str)
 {
-	int word_count = 0;
-	int start_index;
-	int i, j, word_index;
-	int length = strlen(str);
+	char **words;
+	int i, j, k, word_count, length;
 
 	if (str == NULL || *str == '\0')
-	{
 		return (NULL);
-	}
-	for (i = 0; str[i] != '\0'; i++)
-	{
-		if (str[i] != ' ' && (i == 0 || str[i - 1] == ' '))
-		{
-			word_count++;
-		}
-	}
-	char *words = (char *)malloc((word_count + 1) * sizeof(char *));
+	word_count = count_words(str);
+	words = (char **)malloc((word_count + 1) * sizeof(char *));
 	if (words == NULL)
-	{
 		return (NULL);
-	}
-	word_index = 0;
-	for (i = 0; str[i] != '\0'; i++)
+	i = 0;
+	j = 0;
+	while (str[i] != '\0')
 	{
-		if (str[i] != ' ' && (i == 0 || str[i - 1] == ' '))
+		if (str[i] != ' ')
 		{
-			start_index = i;
-			for (j = i; str[j] != ' ' && str[j] != '\0'; j++)
+			length = word_length(&str[i]);
+			words[j] = copy_word(&str[i], length);
+			if (words[j] == NULL)
 			{
-			}
-			words[word_index] = (char *)malloc((j - i + 1) * sizeof(char));
-			if (words[word_index] == NULL)
-			{
-				for (j = 0; j < word_index; j++)
-				{
-					free(words[j]);
-				}
+				for (k = 0; k < j; k++)
+					free(words[k]);
 				free(words);
 				return (NULL);
 			}
-			strncpy(words[word_index], str + start_index, j - i);
-			words[word_index][j - i] = '\0';
-			word_index++;
-			i = j - 1;
+			i += length;
+			j++;
+		}
+		else
+		{
+			i++;
 		}
 	}
-	words[word_index] = NULL;
-	return words;
+	words[j] = NULL;
+	return (words);
 }
+
