@@ -11,9 +11,9 @@ char **strtow(char *str)
 {
 	char **words;
 	int i, j, k, word_count, length;
-	int count_wprds(char *str);
-	int word_lenght(char *str);
-	char *copy_word(char *str, int lenght);
+	int count_words(char *str);
+	int word_length(char *str);
+	char *copy_word(char *str, int length);
 
 	if (str == NULL || *str == '\0')
 		return (NULL);
