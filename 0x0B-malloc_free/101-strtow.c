@@ -47,37 +47,55 @@ char **strtow(char *str)
 	words[j] = NULL;
 	return (words);
 }
+/**
+ * count_words - Counts the number of words in a string
+ * @str: The input string
+ *
+ * Return: The number of words
+ */
 int count_words(char *str)
 {
 	int count = 0;
 	int i = 0;
-	
+
 	while (str[i] != '\0')
 	{
 		if (str[i] != ' ' && (str[i + 1] == ' ' || str[i + 1] == '\0'))
 			count++;
 		i++;
 	}
-	return count;
+	return (count);
 }
+/**
+ * word_length - Computes the length of a word
+ * @str: The input string
+ *
+ * Return: The length of the word
+ */
 int word_length(char *str)
 {
 	int length = 0;
-	
+
 	while (str[length] != ' ' && str[length] != '\0')
 		length++;
-	return length;
+	return (length);
 }
+/**
+ * copy_word - Copies a word into a new string
+ * @str: The input string
+ * @length: The length of the word
+ *
+ * Return: Pointer to the new string containing the word
+ */
 char *copy_word(char *str, int length)
 {
 	char *word = (char *)malloc((length + 1) * sizeof(char));
 	int i;
-	
+
 	if (word == NULL)
-		return NULL;
+		return (NULL);
 	for (i = 0; i < length; i++)
 		word[i] = str[i];
 	word[length] = '\0';
-	return word;
+	return (word);
 }
-
