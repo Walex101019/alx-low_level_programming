@@ -47,4 +47,37 @@ char **strtow(char *str)
 	words[j] = NULL;
 	return (words);
 }
+int count_words(char *str)
+{
+	int count = 0;
+	int i = 0;
+	
+	while (str[i] != '\0')
+	{
+		if (str[i] != ' ' && (str[i + 1] == ' ' || str[i + 1] == '\0'))
+			count++;
+		i++;
+	}
+	return count;
+}
+int word_length(char *str)
+{
+	int length = 0;
+	
+	while (str[length] != ' ' && str[length] != '\0')
+		length++;
+	return length;
+}
+char *copy_word(char *str, int length)
+{
+	char *word = (char *)malloc((length + 1) * sizeof(char));
+	int i;
+	
+	if (word == NULL)
+		return NULL;
+	for (i = 0; i < length; i++)
+		word[i] = str[i];
+	word[length] = '\0';
+	return word;
+}
 
