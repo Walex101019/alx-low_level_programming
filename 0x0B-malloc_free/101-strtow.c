@@ -5,68 +5,55 @@
 /**
  * **strtow - Entry point
  * @str: parameter passed
- * Return: return word
+ * Return: returns word
  */
 char **strtow(char *str)
 {
 	if (str == NULL || *str == '\0')
 	{
-		return (NULL);
+		return NULL;
 	}
 	int word_count = 0;
-	int i = 0;
-	int j;
+	int i, j, word_index;
 	int length = strlen(str);
 
-	while (str[i] != '\0')
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		if (str[i] == ' ')
+		if (str[i] != ' ' && (i == 0 || str[i - 1] == ' '))
 		{
-			i++;
-			continue;
-		}
-		word_count++;
-		while (str[i] != ' ' && str[i] != '\0')
-		{
-			i++;
+			word_count++;
 		}
 	}
 	char *words = (char *)malloc((word_count + 1) * sizeof(char *));
 	if (words == NULL)
 	{
-		return (NULL);
+		return NULL;
 	}
-	i = 0;
-	int word_index = 0;
-
-	while (str[i] != '\0')
+	word_index = 0;
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		if (str[i] == ' ')
+		if (str[i] != ' ' && (i == 0 || str[i - 1] == ' '))
 		{
-			i++;
-			continue;
-		}
-
-		j = i;
-		while (str[j] != ' ' && str[j] != '\0')
-		{
-			j++;
-		}
-		words[word_index] = (char *)malloc((j - i + 1) * sizeof(char));
-		if (words[word_index] == NULL)
-		{
-			for (int k = 0; k < word_index; k++)
+			int start_index = i;
+			for (j = i; str[j] != ' ' && str[j] != '\0'; j++)
 			{
-				free(words[k]);
 			}
-			free(words);
-			return (NULL);
+			words[word_index] = (char *)malloc((j - i + 1) * sizeof(char));
+			if (words[word_index] == NULL)
+			{
+				for (j = 0; j < word_index; j++)
+				{
+					free(words[j]);
+				}
+				free(words);
+				return NULL;
+			}
+			strncpy(words[word_index], str + start_index, j - i);
+			words[word_index][j - i] = '\0';
+			word_index++;
+			i = j - 1;
 		}
-		strncpy(words[word_index], str + i, j - i);
-		words[word_index][j - i] = '\0';
-		word_index++;
-		i = j;
 	}
 	words[word_index] = NULL;
-	return (words);
+	return words;
 }
