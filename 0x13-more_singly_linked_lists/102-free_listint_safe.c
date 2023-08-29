@@ -16,10 +16,8 @@ size_t free_listint_safe(listint_t **h)
 
 	if (h == NULL || *h == NULL)
 		return (0);
-
 	start = *h;
 	loop = find_listint_loop(start);
-
 	while (*h)
 	{
 		tmp = (*h)->next;
@@ -29,7 +27,6 @@ size_t free_listint_safe(listint_t **h)
 			break;
 		*h = tmp;
 	}
-
 	if (loop)
 	{
 		start = loop;
@@ -48,21 +45,17 @@ size_t free_listint_safe(listint_t **h)
 			start = tmp;
 		} while (start != loop);
 	}
-
 	*h = NULL;
-
 	return (count);
 }
 
 listint_t *find_listint_loop(listint_t *head)
 {
 	listint_t *slow, *fast;
-
 	if (head == NULL)
 		return (NULL);
 
 	slow = fast = head;
-
 	while (slow && fast && fast->next)
 	{
 		slow = slow->next;
@@ -70,7 +63,6 @@ listint_t *find_listint_loop(listint_t *head)
 		if (slow == fast)
 			return (slow);
 	}
-
 	return (NULL);
 }
 
