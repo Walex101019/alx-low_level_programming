@@ -8,12 +8,12 @@
  * @next: points to the next node
  *
  * Description: singly linked list node structure
- * for Holberton project
+ * for project
  */
 typedef struct listint_s
 {
-    int n;
-    struct listint_s *next;
+	int n;
+	struct listint_s *next;
 } listint_t;
 
 /**
@@ -23,37 +23,38 @@ typedef struct listint_s
  */
 size_t print_listint_safe(const listint_t *head)
 {
-    const listint_t *slow, *fast;
-    size_t count = 0;
+	const listint_t *slow, *fast;
+	size_t count = 0;
 
-    slow = head;
-    fast = head;
+	slow = head;
+	fast = head;
 
-    while (fast != NULL && fast->next != NULL)
-    {
-        printf("[%p] %d\n", (void *)slow, slow->n);
-        count++;
+	while (fast != NULL && fast->next != NULL)
+	{
+		printf("[%p] %d\n", (void *)slow, slow->n);
+		count++;
 
-        slow = slow->next;
-        fast = fast->next->next;
+		slow = slow->next;
+		fast = fast->next->next;
 
-        if (slow == fast)
-        {
-            printf("[%p] %d\n", (void *)slow, slow->n);
-            count++;
-            printf("-> [%p] %d\n", (void *)fast->next, fast->next->n);
-            count++;
-            break;
-        }
-    }
+		if (slow == fast)
+		{
+			printf("[%p] %d\n", (void *)slow, slow->n);
+			count++;
+			printf("-> [%p] %d\n", (void *)fast->next, fast->next->n);
+			count++;
+			break;
+		}
+	}
 
-    while (head != fast)
-    {
-        printf("[%p] %d\n", (void *)head, head->n);
-        count++;
-        head = head->next;
-        fast = fast->next;
-    }
+	while (head != fast)
+	{
+		printf("[%p] %d\n", (void *)head, head->n);
+		count++;
+		head = head->next;
+		fast = fast->next;
+	}
 
-    return count;
+	return count;
 }
+
