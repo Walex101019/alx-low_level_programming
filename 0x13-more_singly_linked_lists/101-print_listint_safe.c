@@ -3,58 +3,52 @@
 #include "lists.h"
 
 /**
- * struct listint_s - singly linked list
- * @n: integer
- * @next: points to the next node
+ * print_listint_safe - prints a listint_t linked list
+ * @head: pointer to the head of the list
  *
- * Description: singly linked list node structure
- * for project
- */
-typedef struct listint_s
-{
-	int n;
-	struct listint_s *next;
-} listint_t;
-
-/**
- * print_listint_safe - Print a linked list and handle loops
- * @head: Pointer to the head of the linked list
- * Return: Number of nodes in the list
+ * Return: the number of nodes in the list
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	const listint_t *slow, *fast;
 	size_t count = 0;
+	const listint_t *slow, *fast, *loop;
 
-	slow = head;
-	fast = head;
+	if (head == NULL)
+		return (0);
 
-	while (fast != NULL && fast->next != NULL)
+	slow = fast = head;
+	loop = NULL;
+	while (slow && fast && fast->next)
 	{
-		printf("[%p] %d\n", (void *)slow, slow->n);
-		count++;
-
 		slow = slow->next;
 		fast = fast->next->next;
-
 		if (slow == fast)
 		{
-			printf("[%p] %d\n", (void *)slow, slow->n);
-			count++;
-			printf("-> [%p] %d\n", (void *)fast->next, fast->next->n);
-			count++;
+			loop = slow;
 			break;
 		}
 	}
 
-	while (head != fast)
+	slow = head;
+	if (loop)
+	{
+		while (slow != fast)
+		{
+			slow = slow->next;
+			fast = fast->next;
+		}
+	}
+	while (head)
 	{
 		printf("[%p] %d\n", (void *)head, head->n);
 		count++;
+		if (head == loop)
+			break;
 		head = head->next;
-		fast = fast->next;
 	}
 
-	return count;
-}
+	if (loop)
+		printf("-> [%p] %d\n", (void *)loop, loop->n);
 
+	return (count);
+}
