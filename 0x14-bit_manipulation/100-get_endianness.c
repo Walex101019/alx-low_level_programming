@@ -1,0 +1,20 @@
+#include "main.h"
+
+/**
+ * get_endianness - checks the endianness
+ *
+ * Return: 0 if big endian, 1 if little endian
+ */
+int get_endianness(void)
+{
+	unsigned int x = 1;
+
+	char *c = (char *)&x;
+	
+	/* if the least significant byte is stored first, it is little endian */
+	if (*c)
+		return (1);
+	
+	/* otherwise, it is big endian */
+	return (0);
+}
